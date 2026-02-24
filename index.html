@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- ░░ LOADER ░░ -->
   <div id="loader">
     <div class="loader-inner">
       <div class="loader-logo">ENIM <span>CUP</span></div>
@@ -19,99 +18,116 @@
     </div>
   </div>
 
-  <!-- ░░ NAV ░░ -->
-  <nav id="mainNav">
-    <div class="nav-left">
-      <div class="nav-logo">ENIM <span>CUP</span></div>
+  <nav>
+    <div class="nav-logo">ENIM <span>CUP</span></div>
+    <div class="nav-links">
+      <button onclick="showPage('home')"       data-page="home"       class="active">Accueil</button>
+      <button onclick="showPage('classement')" data-page="classement">Classement</button>
+      <button onclick="showPage('matchs')"     data-page="matchs">Matchs</button>
+      <button onclick="showPage('bracket')"    data-page="bracket">🎯 Tableau Final</button>
+      <button onclick="showPage('equipes')"    data-page="equipes">Équipes</button>
+      <button onclick="showPage('stats')"      data-page="stats">Statistiques</button>
+      <button onclick="showPage('admin')"      data-page="admin" class="nav-admin">⚙ Admin</button>
     </div>
-    <div class="nav-links" id="navLinks">
-      <button onclick="showPage('home')"        data-page="home"       class="active">Accueil</button>
-      <button onclick="showPage('classement')"  data-page="classement">Classement</button>
-      <button onclick="showPage('equipes')"     data-page="equipes">Équipes</button>
-      <button onclick="showPage('matchs')"      data-page="matchs">Matchs</button>
-      <button onclick="showPage('stats')"       data-page="stats">Statistiques</button>
-      <button onclick="showPage('admin')"       data-page="admin" class="nav-admin">⚙ Admin</button>
-    </div>
-    <button class="nav-burger" id="navBurger" onclick="toggleMobileMenu()">☰</button>
+    <button class="nav-burger" onclick="toggleMobileMenu()">☰</button>
   </nav>
 
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <button onclick="showPage('home');toggleMobileMenu()"       data-page="home"       class="active">🏠 Accueil</button>
     <button onclick="showPage('classement');toggleMobileMenu()" data-page="classement">🏆 Classement</button>
-    <button onclick="showPage('equipes');toggleMobileMenu()"    data-page="equipes">👥 Équipes</button>
     <button onclick="showPage('matchs');toggleMobileMenu()"     data-page="matchs">⚽ Matchs</button>
-    <button onclick="showPage('stats');toggleMobileMenu()"      data-page="stats">📊 Statistiques</button>
+    <button onclick="showPage('bracket');toggleMobileMenu()"    data-page="bracket">🎯 Tableau Final</button>
+    <button onclick="showPage('equipes');toggleMobileMenu()"    data-page="equipes">👥 Équipes</button>
+    <button onclick="showPage('stats');toggleMobileMenu()"      data-page="stats">📊 Stats</button>
     <button onclick="showPage('admin');toggleMobileMenu()"      data-page="admin" class="nav-admin">⚙ Admin</button>
   </div>
 
-  <!-- ░░ PAGES WRAPPER ░░ -->
-  <main id="mainContent">
+  <main>
 
-    <!-- ── HOME ── -->
+    <!-- HOME -->
     <section class="page active" id="page-home">
       <div class="hero">
         <div class="hero-glow"></div>
         <div class="hero-badge">🌙 Ramadan 1446H · ENIM Rabat</div>
         <h1 class="hero-title">ENIM <span>CUP</span></h1>
         <h2 class="hero-sub">Tournoi de Football Ramadan 2025</h2>
-        <p class="hero-desc">L'École Nationale de l'Industrie Minérale présente son tournoi inter-filières du mois sacré de Ramadan.</p>
-        <div class="hero-stats" id="heroStats">
+        <p class="hero-desc">4 groupes · 2 qualifiés par groupe · Quarts → Demis → Finale</p>
+        <div class="hero-stats">
           <div class="hero-stat"><div class="hs-num" id="hs-equipes">–</div><div class="hs-label">Équipes</div></div>
-          <div class="hero-stat"><div class="hs-num" id="hs-joueurs">–</div><div class="hs-label">Joueurs</div></div>
+          <div class="hero-stat"><div class="hs-num">4</div><div class="hs-label">Groupes</div></div>
           <div class="hero-stat"><div class="hs-num" id="hs-matchs">–</div><div class="hs-label">Matchs joués</div></div>
           <div class="hero-stat"><div class="hs-num" id="hs-buts">–</div><div class="hs-label">Buts</div></div>
-          <div class="hero-stat"><div class="hs-num" id="hs-leader">–</div><div class="hs-label">Leader</div></div>
         </div>
+      </div>
+
+      <div class="phase-bar" id="phaseBar">
+        <div class="ph-step" id="ph-groupe"><div class="ph-num">1</div><div class="ph-lbl">Phase de Groupes</div></div>
+        <div class="ph-arrow">›</div>
+        <div class="ph-step" id="ph-quart"><div class="ph-num">2</div><div class="ph-lbl">Quarts de Finale</div></div>
+        <div class="ph-arrow">›</div>
+        <div class="ph-step" id="ph-demi"><div class="ph-num">3</div><div class="ph-lbl">Demi-Finales</div></div>
+        <div class="ph-arrow">›</div>
+        <div class="ph-step" id="ph-finale"><div class="ph-num">4</div><div class="ph-lbl">Finale</div></div>
       </div>
 
       <div class="home-next">
         <div class="section-label">⏱ Prochain match</div>
-        <div id="nextMatch" class="next-match-card">Chargement…</div>
+        <div id="nextMatch" class="next-match-card">
+          <span style="color:var(--muted);grid-column:1/-1;text-align:center">Chargement…</span>
+        </div>
       </div>
     </section>
 
-    <!-- ── CLASSEMENT ── -->
+    <!-- CLASSEMENT PAR GROUPES -->
     <section class="page" id="page-classement">
       <div class="page-header">
         <h2 class="page-title">🏆 <span>Classement</span></h2>
-        <p class="page-sub">Mis à jour automatiquement en temps réel</p>
+        <p class="page-sub">Les 2 premiers de chaque groupe se qualifient pour les Quarts de Finale</p>
       </div>
-      <div class="table-wrap">
-        <table id="classementTable">
-          <thead>
-            <tr>
-              <th>#</th><th>Équipe</th><th title="Matchs joués">J</th>
-              <th title="Victoires">V</th><th title="Nuls">N</th><th title="Défaites">D</th>
-              <th title="Buts pour">BP</th><th title="Buts contre">BC</th>
-              <th title="Différence de buts">+/-</th><th title="Points">Pts</th>
-              <th>Forme</th>
-            </tr>
-          </thead>
-          <tbody id="classementBody"><tr><td colspan="11" class="loading-cell">Chargement…</td></tr></tbody>
-        </table>
+      <div class="group-tabs" id="groupTabs">
+        <button class="active" onclick="switchGroup(this,'A')">Groupe A</button>
+        <button onclick="switchGroup(this,'B')">Groupe B</button>
+        <button onclick="switchGroup(this,'C')">Groupe C</button>
+        <button onclick="switchGroup(this,'D')">Groupe D</button>
       </div>
+      <div id="groupContent"></div>
     </section>
 
-    <!-- ── ÉQUIPES ── -->
+    <!-- MATCHS -->
+    <section class="page" id="page-matchs">
+      <div class="page-header">
+        <h2 class="page-title">⚽ <span>Matchs</span></h2>
+        <p class="page-sub">Tous les matchs du tournoi</p>
+      </div>
+      <div class="group-tabs">
+        <button class="active" onclick="filterMatchPhase(this,'all')">Tous</button>
+        <button onclick="filterMatchPhase(this,'groupe')">Groupes</button>
+        <button onclick="filterMatchPhase(this,'quart')">Quarts</button>
+        <button onclick="filterMatchPhase(this,'demi')">Demis</button>
+        <button onclick="filterMatchPhase(this,'finale')">Finale</button>
+      </div>
+      <div id="matchsList"></div>
+    </section>
+
+    <!-- BRACKET -->
+    <section class="page" id="page-bracket">
+      <div class="page-header">
+        <h2 class="page-title">🎯 <span>Tableau Final</span></h2>
+        <p class="page-sub">Phases à élimination directe</p>
+      </div>
+      <div id="bracketView"></div>
+    </section>
+
+    <!-- ÉQUIPES -->
     <section class="page" id="page-equipes">
       <div class="page-header">
         <h2 class="page-title">👥 <span>Équipes</span></h2>
         <p class="page-sub">Cliquez sur une équipe pour voir ses joueurs</p>
       </div>
-      <div class="teams-grid" id="teamsGrid"><div class="loading-cell">Chargement…</div></div>
+      <div class="teams-grid" id="teamsGrid"></div>
     </section>
 
-    <!-- ── MATCHS ── -->
-    <section class="page" id="page-matchs">
-      <div class="page-header">
-        <h2 class="page-title">⚽ <span>Matchs</span></h2>
-        <p class="page-sub">Résultats et programme</p>
-      </div>
-      <div id="matchsList"><div class="loading-cell">Chargement…</div></div>
-    </section>
-
-    <!-- ── STATS ── -->
+    <!-- STATS -->
     <section class="page" id="page-stats">
       <div class="page-header">
         <h2 class="page-title">📊 <span>Statistiques</span></h2>
@@ -121,55 +137,42 @@
       <h3 class="sub-title">⚽ Classement des Buteurs</h3>
       <div class="table-wrap" style="margin-bottom:2rem">
         <table>
-          <thead><tr><th>#</th><th>Joueur</th><th>Équipe</th><th>Buts</th><th>🟨</th><th>🟥</th></tr></thead>
-          <tbody id="scorersBody"><tr><td colspan="6" class="loading-cell">Chargement…</td></tr></tbody>
+          <thead><tr><th>#</th><th>Joueur</th><th>Équipe</th><th>Gr.</th><th>Buts</th><th>🟨</th><th>🟥</th></tr></thead>
+          <tbody id="scorersBody"></tbody>
         </table>
       </div>
       <h3 class="sub-title">🟨 Cartons</h3>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Joueur</th><th>Équipe</th><th>Type</th><th>Match</th><th>Minute</th></tr></thead>
-          <tbody id="cartonsBody"><tr><td colspan="5" class="loading-cell">Chargement…</td></tr></tbody>
+          <thead><tr><th>Joueur</th><th>Équipe</th><th>Type</th><th>Match</th><th>Min.</th></tr></thead>
+          <tbody id="cartonsBody"></tbody>
         </table>
       </div>
     </section>
 
-    <!-- ── ADMIN ── -->
+    <!-- ADMIN -->
     <section class="page" id="page-admin">
-
-      <!-- LOGIN -->
       <div id="adminLogin" class="login-wrap">
         <div class="login-card">
           <div class="login-icon">🔐</div>
           <h2>Espace Admin</h2>
           <p>Accès réservé aux organisateurs</p>
-          <div id="loginMsg"></div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" id="loginEmail" placeholder="admin@enim.ma" />
-          </div>
-          <div class="form-group">
-            <label>Mot de passe</label>
-            <input type="password" id="loginPass" placeholder="••••••••" />
-          </div>
+          <div id="loginMsg" class="msg"></div>
+          <div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="admin@enim.ma" /></div>
+          <div class="form-group"><label>Mot de passe</label><input type="password" id="loginPass" placeholder="••••••••" /></div>
           <button class="btn btn-primary btn-full" onclick="doLogin()">Se connecter</button>
         </div>
       </div>
 
-      <!-- DASHBOARD -->
       <div id="adminDash" style="display:none">
         <div class="dash-header">
           <div>
             <h2 class="page-title">⚙ <span>Tableau de Bord</span></h2>
             <p class="page-sub" id="dashUser"></p>
           </div>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap">
-            <button class="btn btn-outline btn-sm" onclick="showPage('admin');changePass()">🔑 Changer mot de passe</button>
-            <button class="btn btn-danger btn-sm" onclick="doLogout()">Déconnexion</button>
-          </div>
+          <button class="btn btn-danger btn-sm" onclick="doLogout()">Déconnexion</button>
         </div>
 
-        <!-- Admin Tabs -->
         <div class="admin-tabs">
           <button class="active" onclick="adminTab(this,'tab-equipes')">👥 Équipes</button>
           <button onclick="adminTab(this,'tab-joueurs')">🎽 Joueurs</button>
@@ -178,141 +181,134 @@
           <button onclick="adminTab(this,'tab-settings')">⚙ Paramètres</button>
         </div>
 
-        <!-- TAB: ÉQUIPES -->
+        <!-- ÉQUIPES -->
         <div class="admin-tab active" id="tab-equipes">
           <div class="admin-card">
             <h3>Ajouter une équipe</h3>
             <div class="form-row">
-              <div class="form-group"><label>Nom de l'équipe *</label><input id="eq-nom" placeholder="Ex: GC Informatique" /></div>
+              <div class="form-group"><label>Nom *</label><input id="eq-nom" placeholder="GC Informatique" /></div>
               <div class="form-group"><label>Emoji</label><input id="eq-emoji" placeholder="💻" maxlength="2" /></div>
             </div>
-            <div class="form-group"><label>Coach / Responsable</label><input id="eq-coach" placeholder="Nom du responsable" /></div>
-            <div id="eqMsg"></div>
+            <div class="form-row">
+              <div class="form-group"><label>Groupe *</label>
+                <select id="eq-groupe">
+                  <option value="A">Groupe A</option><option value="B">Groupe B</option>
+                  <option value="C">Groupe C</option><option value="D">Groupe D</option>
+                </select>
+              </div>
+              <div class="form-group"><label>Coach</label><input id="eq-coach" placeholder="Nom du responsable" /></div>
+            </div>
+            <div id="eqMsg" class="msg"></div>
             <button class="btn btn-primary" onclick="addEquipe()">+ Ajouter l'équipe</button>
           </div>
-          <div class="admin-card">
-            <h3>Équipes enregistrées</h3>
-            <div id="adminEquipesList"><div class="loading-cell">Chargement…</div></div>
-          </div>
+          <div class="admin-card"><h3>Équipes</h3><div id="adminEquipesList"></div></div>
         </div>
 
-        <!-- TAB: JOUEURS -->
+        <!-- JOUEURS -->
         <div class="admin-tab" id="tab-joueurs">
           <div class="admin-card">
             <h3>Ajouter un joueur</h3>
             <div class="form-row">
-              <div class="form-group"><label>Nom complet *</label><input id="j-nom" placeholder="Ex: Mohammed Alami" /></div>
+              <div class="form-group"><label>Nom *</label><input id="j-nom" placeholder="Mohammed Alami" /></div>
               <div class="form-group"><label>Numéro</label><input id="j-num" type="number" placeholder="10" min="1" max="99" /></div>
             </div>
             <div class="form-row">
-              <div class="form-group"><label>Équipe *</label>
-                <select id="j-equipe"><option value="">— Choisir une équipe —</option></select>
-              </div>
+              <div class="form-group"><label>Équipe *</label><select id="j-equipe"><option value="">— Choisir —</option></select></div>
               <div class="form-group"><label>Poste</label>
-                <select id="j-poste">
-                  <option>Gardien</option><option>Défenseur</option><option>Milieu</option><option>Attaquant</option>
-                </select>
+                <select id="j-poste"><option>Gardien</option><option>Défenseur</option><option>Milieu</option><option>Attaquant</option></select>
               </div>
             </div>
-            <div id="jMsg"></div>
-            <button class="btn btn-primary" onclick="addJoueur()">+ Ajouter le joueur</button>
+            <div id="jMsg" class="msg"></div>
+            <button class="btn btn-primary" onclick="addJoueur()">+ Ajouter</button>
           </div>
-          <div class="admin-card">
-            <h3>Joueurs enregistrés</h3>
-            <div id="adminJoueursList"><div class="loading-cell">Chargement…</div></div>
-          </div>
+          <div class="admin-card"><h3>Joueurs</h3><div id="adminJoueursList"></div></div>
         </div>
 
-        <!-- TAB: MATCHS -->
+        <!-- MATCHS -->
         <div class="admin-tab" id="tab-matchs">
           <div class="admin-card">
-            <h3>Programmer / Enregistrer un match</h3>
+            <h3>Enregistrer un match</h3>
             <div class="form-row">
-              <div class="form-group"><label>Équipe Domicile *</label>
-                <select id="m-home"><option value="">— Domicile —</option></select>
+              <div class="form-group"><label>Phase *</label>
+                <select id="m-phase" onchange="onPhaseChange()">
+                  <option value="groupe">Phase de Groupes</option>
+                  <option value="quart">Quart de Finale</option>
+                  <option value="demi">Demi-Finale</option>
+                  <option value="3eme">Match 3ème Place</option>
+                  <option value="finale">Finale</option>
+                </select>
               </div>
-              <div class="form-group"><label>Équipe Extérieur *</label>
-                <select id="m-away"><option value="">— Extérieur —</option></select>
+              <div class="form-group" id="groupeSelectWrap">
+                <label>Groupe</label>
+                <select id="m-groupe"><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
               </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Domicile *</label><select id="m-home"><option value="">— Domicile —</option></select></div>
+              <div class="form-group"><label>Extérieur *</label><select id="m-away"><option value="">— Extérieur —</option></select></div>
             </div>
             <div class="form-row">
               <div class="form-group"><label>Date & Heure</label><input id="m-date" type="datetime-local" /></div>
-              <div class="form-group"><label>Phase / Journée</label><input id="m-journee" placeholder="Ex: Journée 1, Demi-finale…" /></div>
+              <div class="form-group"><label>Label</label><input id="m-label" placeholder="Ex: QF1, SF2, FINALE…" /></div>
             </div>
             <div class="form-row">
-              <div class="form-group"><label>Score Domicile</label><input id="m-sh" type="number" min="0" placeholder="0" /></div>
-              <div class="form-group"><label>Score Extérieur</label><input id="m-sa" type="number" min="0" placeholder="0" /></div>
+              <div class="form-group"><label>Score Domicile</label><input id="m-sh" type="number" min="0" placeholder="–" /></div>
+              <div class="form-group"><label>Score Extérieur</label><input id="m-sa" type="number" min="0" placeholder="–" /></div>
             </div>
-            <small class="hint">Laissez les scores vides pour programmer un match à venir.</small>
-            <div id="mMsg"></div>
-            <button class="btn btn-primary" onclick="addMatch()">+ Enregistrer le match</button>
+            <small class="hint">Laissez les scores vides pour un match à venir.</small>
+            <div id="mMsg" class="msg"></div>
+            <button class="btn btn-primary" onclick="addMatch()">+ Enregistrer</button>
           </div>
-          <div class="admin-card">
-            <h3>Liste des matchs</h3>
-            <div id="adminMatchsList"><div class="loading-cell">Chargement…</div></div>
-          </div>
+          <div class="admin-card"><h3>Liste des matchs</h3><div id="adminMatchsList"></div></div>
         </div>
 
-        <!-- TAB: CARTONS -->
+        <!-- CARTONS -->
         <div class="admin-tab" id="tab-cartons">
           <div class="admin-card">
             <h3>Ajouter un carton</h3>
             <div class="form-row">
-              <div class="form-group"><label>Joueur *</label>
-                <select id="c-joueur"><option value="">— Choisir un joueur —</option></select>
-              </div>
-              <div class="form-group"><label>Match *</label>
-                <select id="c-match"><option value="">— Choisir un match —</option></select>
-              </div>
+              <div class="form-group"><label>Joueur *</label><select id="c-joueur"><option value="">— Joueur —</option></select></div>
+              <div class="form-group"><label>Match *</label><select id="c-match"><option value="">— Match —</option></select></div>
             </div>
             <div class="form-row">
-              <div class="form-group"><label>Type de carton</label>
-                <select id="c-type">
-                  <option value="jaune">🟨 Carton Jaune</option>
-                  <option value="rouge">🟥 Carton Rouge</option>
-                </select>
+              <div class="form-group"><label>Type</label>
+                <select id="c-type"><option value="jaune">🟨 Jaune</option><option value="rouge">🟥 Rouge</option></select>
               </div>
               <div class="form-group"><label>Minute</label><input id="c-minute" type="number" min="1" max="120" placeholder="45" /></div>
             </div>
-            <div id="cMsg"></div>
-            <button class="btn btn-primary" onclick="addCarton()">+ Ajouter le carton</button>
+            <div id="cMsg" class="msg"></div>
+            <button class="btn btn-primary" onclick="addCarton()">+ Ajouter</button>
           </div>
-          <div class="admin-card">
-            <h3>Cartons enregistrés</h3>
-            <div id="adminCartonsList"><div class="loading-cell">Chargement…</div></div>
-          </div>
+          <div class="admin-card"><h3>Cartons</h3><div id="adminCartonsList"></div></div>
         </div>
 
-        <!-- TAB: SETTINGS -->
+        <!-- SETTINGS -->
         <div class="admin-tab" id="tab-settings">
           <div class="admin-card">
-            <h3>🔑 Changer le mot de passe admin</h3>
-            <div class="form-group"><label>Mot de passe actuel</label><input type="password" id="cp-old" placeholder="••••••••" /></div>
-            <div class="form-group"><label>Nouveau mot de passe</label><input type="password" id="cp-new" placeholder="••••••••" /></div>
-            <div class="form-group"><label>Confirmer</label><input type="password" id="cp-confirm" placeholder="••••••••" /></div>
-            <div id="cpMsg"></div>
+            <h3>🔑 Changer le mot de passe</h3>
+            <div class="form-group"><label>Actuel</label><input type="password" id="cp-old" /></div>
+            <div class="form-group"><label>Nouveau (min. 6 caractères)</label><input type="password" id="cp-new" /></div>
+            <div class="form-group"><label>Confirmer</label><input type="password" id="cp-confirm" /></div>
+            <div id="cpMsg" class="msg"></div>
             <button class="btn btn-primary" onclick="changePass()">Mettre à jour</button>
           </div>
           <div class="admin-card">
-            <h3>📧 Changer l'email admin</h3>
-            <div class="form-group"><label>Nouvel email</label><input type="email" id="ce-email" placeholder="admin@enim.ma" /></div>
-            <div class="form-group"><label>Mot de passe actuel (confirmation)</label><input type="password" id="ce-pass" placeholder="••••••••" /></div>
-            <div id="ceMsg"></div>
+            <h3>📧 Changer l'email</h3>
+            <div class="form-group"><label>Nouvel email</label><input type="email" id="ce-email" /></div>
+            <div class="form-group"><label>Mot de passe actuel</label><input type="password" id="ce-pass" /></div>
+            <div id="ceMsg" class="msg"></div>
             <button class="btn btn-primary" onclick="changeEmail()">Mettre à jour</button>
           </div>
-          <div class="admin-card" style="border-color:rgba(255,60,60,0.2)">
+          <div class="admin-card" style="border-color:rgba(255,60,60,.2)">
             <h3 style="color:#ff6b6b">⚠ Zone dangereuse</h3>
-            <p style="color:var(--muted);font-size:.85rem;margin-bottom:1rem">Ces actions sont irréversibles.</p>
             <button class="btn btn-danger" onclick="resetAllData()">🗑 Réinitialiser toutes les données</button>
           </div>
         </div>
-
-      </div><!-- /adminDash -->
+      </div>
     </section>
 
-  </main><!-- /mainContent -->
+  </main>
 
-  <!-- ░░ MODAL ÉQUIPE ░░ -->
   <div class="modal-overlay" id="teamModal" onclick="if(event.target===this)closeModal('teamModal')">
     <div class="modal">
       <div class="modal-head">
@@ -323,10 +319,7 @@
     </div>
   </div>
 
-  <!-- ░░ TOAST ░░ -->
   <div id="toast"></div>
-
-  <!-- Firebase SDK -->
   <script type="module" src="app.js"></script>
 </body>
 </html>
