@@ -467,3 +467,117 @@ tbody td { padding: .75rem 1rem; }
   .match-team { font-size: .82rem; }
   .modal-stats { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ═══════════════════════════════════════════
+   PHASE SYSTEM & BRACKET — Additions
+═══════════════════════════════════════════ */
+
+/* Phase Bar */
+.phase-bar {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: .5rem;
+  margin: 2rem auto 0; max-width: 700px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 1.5rem;
+}
+.ph-step {
+  display: flex; flex-direction: column; align-items: center; gap: .2rem;
+  opacity: .4; transition: opacity .3s;
+}
+.ph-step.active { opacity: 1; }
+.ph-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--dark3); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: .8rem; font-weight: 700;
+}
+.ph-step.active .ph-num { background: var(--gold); border-color: var(--gold); color: #04091a; }
+.ph-step.done .ph-num   { background: var(--blue); border-color: var(--blue); color: #fff; opacity:.7; }
+.ph-lbl { font-size: .7rem; color: var(--muted); text-align: center; white-space: nowrap; }
+.ph-step.active .ph-lbl { color: var(--gold); }
+.ph-arrow { color: var(--border); font-size: 1.2rem; }
+
+/* Group Tabs */
+.group-tabs {
+  display: flex; gap: .3rem; flex-wrap: wrap; margin-bottom: 1.25rem;
+}
+.group-tabs button {
+  background: none; border: 1px solid var(--border); cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: .82rem; font-weight: 600;
+  color: var(--muted); padding: .4rem 1.1rem; border-radius: 8px; transition: all .2s;
+}
+.group-tabs button:hover  { color: var(--text); border-color: var(--muted); }
+.group-tabs button.active { background: rgba(255,214,0,.1); border-color: var(--gold); color: var(--gold); }
+
+/* Group section */
+.group-section { margin-bottom: 2rem; }
+.group-header {
+  display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem;
+}
+.group-badge {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem;
+  color: #04091a; background: var(--gold);
+  width: 44px; height: 44px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; letter-spacing: 1px;
+}
+.group-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; }
+.qualified-label {
+  font-size: .7rem; color: var(--green-ok); background: rgba(34,197,94,.1);
+  border: 1px solid rgba(34,197,94,.25); padding: .15rem .6rem;
+  border-radius: 50px; margin-left: auto; white-space: nowrap;
+}
+
+/* Qualified row highlight */
+.qualified-row td:first-child { border-left: 3px solid var(--green-ok); }
+
+/* Bracket */
+.bracket-container {
+  overflow-x: auto; padding-bottom: 1rem;
+}
+.bracket {
+  display: flex; gap: 0; min-width: 700px;
+}
+.bracket-round {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: space-around; padding: 0 .5rem;
+}
+.bracket-round-title {
+  text-align: center; font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem; letter-spacing: 2px; color: var(--gold);
+  padding: .5rem 0 1rem; border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+.bracket-match {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden; margin: .4rem 0;
+  transition: border-color .2s;
+}
+.bracket-match:hover { border-color: var(--gold); }
+.bracket-team {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .55rem .85rem; font-size: .85rem; font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.bracket-team:last-child { border-bottom: none; }
+.bracket-team.winner { color: var(--gold); background: rgba(255,214,0,.06); }
+.bracket-team.tbd { color: var(--muted); font-style: italic; font-weight: 400; }
+.bracket-score {
+  font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  color: var(--gold); font-size: .9rem; min-width: 20px; text-align: right;
+}
+.bracket-separator {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 .25rem;
+}
+.bracket-separator::after { content: ''; display: block; width: 1px; height: 100%; background: var(--border); }
+
+/* Champion card */
+.champion-card {
+  text-align: center; padding: 2rem;
+  background: linear-gradient(135deg, rgba(255,214,0,.08), rgba(26,111,212,.08));
+  border: 1px solid var(--border-gold); border-radius: 16px;
+  margin-top: 1rem;
+}
+.champion-emoji { font-size: 3rem; }
+.champion-title { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 3px; color: var(--muted); margin: .5rem 0 .25rem; }
+.champion-name { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; color: var(--gold); }
