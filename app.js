@@ -11,13 +11,13 @@ import {
 
 // ── 🔥 VOTRE CONFIGURATION FIREBASE ──────────────────────────
 const firebaseConfig = {
-  apiKey: "AIzaSyBIcjQfbtPMa401Bk1HbMKtkJkGO2q9OwY",
-  authDomain: "enim-cup.firebaseapp.com",
-  databaseURL: "https://enim-cup-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "enim-cup",
-  storageBucket: "enim-cup.firebasestorage.app",
+  apiKey:            "AIzaSyBIcjQfbtPMa401Bk1HbMKtkJkGO2q9OwY",
+  authDomain:        "enim-cup.firebaseapp.com",
+  databaseURL:       "https://enim-cup-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId:         "enim-cup",
+  storageBucket:     "enim-cup.firebasestorage.app",
   messagingSenderId: "191728242430",
-  appId: "1:191728242430:web:817a7664ca94bf5e94dfaf"
+  appId:             "1:191728242430:web:817a7664ca94bf5e94dfaf"
 };
 // ─────────────────────────────────────────────────────────────
 
