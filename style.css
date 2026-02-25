@@ -589,8 +589,8 @@ tbody td { padding: .75rem 1rem; }
   gap: .6rem;
 }
 .nav-logo-img {
-  height: 50px;
-  width: 50px;
+  height: 150px;
+  width: 150px;
   object-fit: contain;
   border-radius: 6px;
 }
