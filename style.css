@@ -86,9 +86,9 @@ nav {
 .nav-logo {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.7rem; letter-spacing: 4px;
-  color: var(--gold);
+  color: var(#FFFFFF);
 }
-.nav-logo span { color: var(--blue); }
+.nav-logo span { color: var(#FFFFFF); }
 .nav-links { display: flex; gap: .25rem; }
 .nav-links button {
   background: none; border: none; cursor: pointer;
@@ -589,8 +589,8 @@ tbody td { padding: .75rem 1rem; }
   gap: .6rem;
 }
 .nav-logo-img {
-  height: 36px;
-  width: 36px;
+  height: 50px;
+  width: 50px;
   object-fit: contain;
   border-radius: 6px;
 }
