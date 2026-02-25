@@ -19,7 +19,10 @@
   </div>
 
   <nav>
-    <div class="nav-logo">ENIM <span>CUP</span></div>
+    <div class="nav-logo">
+      <img src="logo.png" alt="ENIM Logo" class="nav-logo-img" onerror="this.style.display='none'" />
+      ENIM <span>CUP</span>
+    </div>
     <div class="nav-links">
       <button onclick="showPage('home')"       data-page="home"       class="active">Accueil</button>
       <button onclick="showPage('classement')" data-page="classement">Classement</button>
@@ -320,6 +323,10 @@
   </div>
 
   <div id="toast"></div>
+
+  <footer class="dev-footer">
+    <span>Développé par <em>Imad Taibi</em></span>
+  </footer>
   <script type="module" src="app.js"></script>
 </body>
 </html>
